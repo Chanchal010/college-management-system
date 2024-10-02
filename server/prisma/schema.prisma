@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+
+model StudentAuth {
+  id String @id @default(uuid())
+  fullName String 
+  // middleName String? @db.VarChar(50)
+  // lastName String @db.VarChar(50)
+  // mobileNumber String @unique  
+  // email String @unique
+  // department  String 
+  // course      String
+  // semester    Int
+  // universityRollNo String @unique
+  universityRegNo String @unique
+  gender Gender
+  password    String
+  // confirmPassword String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+}
+
+
+model FacultyAuth {
+  id String @id @default(uuid())
+  fullName String 
+  // middleName String? @db.VarChar(50)
+  // lastName String @db.VarChar(50)
+  // mobileNumber String @unique  
+  // department  String
+  employeeId      String @unique
+  // dateOfJoining    DateTime
+  designation String
+  gender Gender
+  password    String
+  // confirmPassword String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model AdminAuth {
+  id String @id @default(uuid())
+  fullName String @db.VarChar(50)
+  // middleName String? @db.VarChar(50)
+  // lastName String @db.VarChar(50)
+  // mobileNumber String @unique  
+  // department  String
+  adminId  String @unique
+  // dateOfJoining    DateTime
+  designation String
+  password    String
+  gender Gender
+  // confirmPassword String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+}
+
+enum Gender {
+  male 
+  female
+  other
+}
