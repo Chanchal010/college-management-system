@@ -22,7 +22,7 @@ export default function Register() {
     },
     validationSchema: Yup.object({
       fullName: Yup.string().required("Full Name is required"),
-      adminId: Yup.string()
+      employeeId: Yup.string()
         .matches(
           /^\d{5}$/,
           "Teacher Id must follow the format XXXXX"
@@ -35,7 +35,7 @@ export default function Register() {
       gender: Yup.string().required("Gender is required"),
       designation: Yup.string().required("designation is required"),
     }),
-    onSubmit: async (values, { setSubmitting, setErrors }) => {
+    onSubmit: async (values, { setSubmitting }) => {
       try {
         const res = await axios.post("/api/v1/auth/register-teacher", values, {
           headers: {
@@ -48,14 +48,6 @@ export default function Register() {
           navigate("/teacher-logIn", { replace: true });
         }
       } catch (error: unknown) {
-        setErrors({
-          fullName: "Check your credentials",
-          employeeId: "Filled The employe Id Correctly",
-          password: "Check your password",
-          confirmPassword: "please be sure to enter the same password",
-          gender: "Something went wrong!",
-          designation: "Something went wrong!",
-        });
         toast.error((error as Error).message);
       } finally {
         setSubmitting(false);
@@ -148,9 +140,9 @@ export default function Register() {
           </span>
         </Link>
       </div>
-      <p className="text-red-700 mt-5 text-center">
+      {/* <p className="text-red-700 mt-5 text-center">
       {formik.errors && Object.keys(formik.errors).length > 0 && "Error occurred"}
-      </p>
+      </p> */}
     </div>
   );
 }
