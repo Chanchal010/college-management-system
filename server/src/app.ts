@@ -24,10 +24,17 @@ app.use(cookieParser());
 //auth routes
 import studentAuthRoute from './routes/auth/student/student.route'
 import teacherAuthRoute from './routes/auth/teacher/teacher.route'
-import adminAuthRouter from './routes/auth/admin/admin.route'
+import adminAuthRoute from './routes/auth/admin/admin.route'
+import studentProfileRoute from './routes/profile/studentProfile.route'
+
+
 app.use('/api/v1/auth', studentAuthRoute)
 app.use('/api/v1/auth', teacherAuthRoute)
-app.use('/api/v1/auth', adminAuthRouter)
+app.use('/api/v1/auth', adminAuthRoute)
+
+app.use('/api/v1/profile', studentProfileRoute)
+
+
 
 
 export default app;

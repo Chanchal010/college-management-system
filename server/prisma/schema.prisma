@@ -16,22 +16,18 @@ datasource db {
 
 
 model StudentAuth {
-  id String @id @default(uuid())
+  studentAuthId String @id @default(uuid())
   fullName String 
-  // middleName String? @db.VarChar(50)
-  // lastName String @db.VarChar(50)
-  // mobileNumber String @unique  
-  // email String @unique
-  // department  String 
-  // course      String
-  // semester    Int
-  // universityRollNo String @unique
   universityRegNo String @unique
   gender Gender
   password    String
-  // confirmPassword String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  // studentProfile StudentProfile? @relation(fields: [studentAuthId], references: [studentAuthId]) // Add this annotation
+
+  // StudentProfile StudentProfile? @relation(fields: [id], references: [studentAuthId])  // 1:1 relation (StudentAuth has a profile)
+  studentProfile StudentProfile?
 
 }
 
@@ -74,5 +70,126 @@ model AdminAuth {
 enum Gender {
   male 
   female
+  other
+}
+
+
+model StudentProfile {
+  // studentProfileId  Int     @id @default(autoincrement()) @unique 
+  // // studentId     String @unique
+  // studentAuthId   String @unique
+  studentProfileId     Int        @id @default(autoincrement()) @unique 
+  studentAuthId        String     @unique   // Foreign key from StudentAuth
+  campus        String
+  universityMail String
+  firstName     String
+  surname       String
+  mobile1       Int
+  mobile2       Int?
+  bloodGroup    String?
+  height        Float?
+  weight        Float?
+  dateOfBirth   DateTime
+  placeOfBirth  String?
+  religion      String
+  careerGoal    String?
+  caste         String?
+  corseReason    String?
+  abcId         String 
+  hobby         hobby
+  presentAddress String   @db.VarChar(90)
+  city           String
+  area           String?
+  district       String
+  state          String
+  postalCode     String
+  postOffice     String
+  policeStation  String @db.VarChar(50) 
+  aadharNumber   Int
+  permanentAddress String   @db.VarChar(90)
+  city2           String
+  area2           String
+  district2       String
+  state2          String
+  postalCode2     String
+  postOffice2     String?
+  policeStation2  String @db.VarChar(50) 
+  aadharNumber2   Int
+  whatsAppNumber  Int
+
+  //Qualification Details
+  instituteOfClassX  String
+  boardOfClassX       String
+  yearOfClassXPassing        Int
+  percentageOfClassX  Float
+  mediumOfClassX  String?
+
+
+  instituteOfClassXII  String
+  boardOfClassXII       String
+  yearOfClassXIIPassing        Int
+  percentageOfClassXII  Float
+  mediumOfClassXII  String?
+
+  instituteOfGraduation  String
+  boardOfGraduation       String
+  yearOfGraduationPassing        Int
+  percentageOfGraduation  Float
+  mediumOfGraduation  String?
+
+  //Guardian Details
+  guardian Guardian
+  fatherName  String
+  fatherOccupation  String
+  fatherMobile  Int
+  fatherEmail  String?
+  motherName  String
+  motherOccupation  String?
+  motherMobile  Int?
+  motherEmail  String?
+
+  noOfBrothers  Int?
+  noOfSisters  Int?
+  
+
+  //Local Guardian Details
+  localGuardianName  String
+  localGuardianOccupation  String?
+  localGuardianMobile  Int
+  localGuardianEmail  String?
+
+  createdAt     DateTime @default(now())
+   // Relation with StudentAuth (StudentProfile belongs to StudentAuth)
+  studentAuth StudentAuth @relation(fields: [studentAuthId], references: [studentAuthId], onDelete: Cascade)
+  
+
+  // studentAuth StudentAuth @relation(fields: [studentAuthId], references: [studentAuthId], onDelete: Cascade)
+
+  // studentAuth StudentAuth @relation(fields: [studentAuthId], references: [id])
+
+  // studentAuth   StudentAuth @relation(fields: [studentAuthId], references: [id]) // Add this line
+
+  // StudentAuth   StudentAuth @relation(fields: [studentAuthId], references: [id]) // Defining the relation
+
+}
+
+enum hobby {
+  acting
+  dancing
+  football
+  cricket
+  chess
+  photography
+  singing
+  indoorGames
+  outdoorGames
+  reading
+  painting
+  sketching
+}
+
+enum Guardian {
+  father
+  mother
   other
 }

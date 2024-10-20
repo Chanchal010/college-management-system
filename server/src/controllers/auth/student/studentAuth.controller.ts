@@ -76,7 +76,7 @@ export const registerStudent = async (
 
     // Retrieve the created student's details
     const createdStudent = await prisma.studentAuth.findUnique({
-      where: { id: newStudent.id },
+      where: { studentAuthId: newStudent.studentAuthId },
       select: {
         fullName: true,
         gender: true,
@@ -131,7 +131,7 @@ export const logInStudent = async (
     }
 
     const token = jwt.sign(
-      { id: student.id },
+      { id: student.studentAuthId },
       process.env.JWT_SECRET as string,
       {
         expiresIn: '1h',
@@ -140,10 +140,10 @@ export const logInStudent = async (
 
     const loggedInStudent = await prisma.studentAuth.findUnique({
       where: {
-        id: student.id,
+        studentAuthId: student.studentAuthId,
       },
       select: {
-        id: true,
+        studentAuthId: true,
         universityRegNo: true,
         gender: true,
       },
