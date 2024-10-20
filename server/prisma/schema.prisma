@@ -24,17 +24,10 @@ model StudentAuth {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-<<<<<<< HEAD
   // studentProfile StudentProfile? @relation(fields: [studentAuthId], references: [studentAuthId]) // Add this annotation
 
   // StudentProfile StudentProfile? @relation(fields: [id], references: [studentAuthId])  // 1:1 relation (StudentAuth has a profile)
   studentProfile StudentProfile?
-=======
-  studentProfile StudentProfile? @relation(fields: [studentAuthId], references: [studentAuthId]) // Add this annotation
-
-  // StudentProfile StudentProfile? @relation(fields: [id], references: [studentAuthId])  // 1:1 relation (StudentAuth has a profile)
-
->>>>>>> 08156e700d3cd5e911bc70479cb58fe5313f6c11
 
 }
 
@@ -82,17 +75,11 @@ enum Gender {
 
 
 model StudentProfile {
-<<<<<<< HEAD
   // studentProfileId  Int     @id @default(autoincrement()) @unique 
   // // studentId     String @unique
   // studentAuthId   String @unique
   studentProfileId     Int        @id @default(autoincrement()) @unique 
   studentAuthId        String     @unique   // Foreign key from StudentAuth
-=======
-  studentProfileId  Int     @id @default(autoincrement()) @unique 
-  // studentId     String @unique
-  studentAuthId   String @unique
->>>>>>> 08156e700d3cd5e911bc70479cb58fe5313f6c11
   campus        String
   universityMail String
   firstName     String
@@ -170,7 +157,6 @@ model StudentProfile {
   localGuardianOccupation  String?
   localGuardianMobile  Int
   localGuardianEmail  String?
-<<<<<<< HEAD
 
   createdAt     DateTime @default(now())
    // Relation with StudentAuth (StudentProfile belongs to StudentAuth)
@@ -178,14 +164,6 @@ model StudentProfile {
   
 
   // studentAuth StudentAuth @relation(fields: [studentAuthId], references: [studentAuthId], onDelete: Cascade)
-=======
-  
-
-
-  createdAt     DateTime @default(now())
-
-  studentAuth StudentAuth @relation(fields: [studentAuthId], references: [studentAuthId], onDelete: Cascade)
->>>>>>> 08156e700d3cd5e911bc70479cb58fe5313f6c11
 
   // studentAuth StudentAuth @relation(fields: [studentAuthId], references: [id])
 
