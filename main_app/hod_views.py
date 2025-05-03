@@ -709,8 +709,12 @@ def delete_course(request, course_id):
 
 def delete_subject(request, subject_id):
     subject = get_object_or_404(Subject, id=subject_id)
-    subject.delete()
-    messages.success(request, "Subject deleted successfully!")
+    try:
+        # This will now cascade and delete related attendance and student results
+        subject.delete()
+        messages.success(request, "Subject deleted successfully!")
+    except Exception as e:
+        messages.error(request, f"Error deleting subject: {str(e)}")
     return redirect(reverse('manage_subject'))
 
 
