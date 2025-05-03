@@ -163,7 +163,8 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
 EMAIL_USE_TLS = True
 # DEFAULT_FROM_EMAIL = "School Management System <admin@admin.com>"
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Use standard static files storage to avoid compression issues
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 # Configure database for production if DATABASE_URL is set
 if 'DATABASE_URL' in os.environ:
