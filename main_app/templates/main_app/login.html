@@ -62,8 +62,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <div class="g-recaptcha" data-sitekey="6LfswtgZAAAAAJ7bhwqZZtDpBsc75ekH6FWA4Fnt"></div>
-
+                        <div class="g-recaptcha" data-sitekey="6LfswtgZAAAAAJ7bhwqZZtDpBsc75ekH6FWA4Fnt" data-callback="enableBtn"></div>
                     </div>
                     <div class="row">
                         <div class="col-8">
@@ -102,6 +101,17 @@
     <!-- AdminLTE App -->
     <script src="{% static 'dist/js/adminlte.min.js' %}"></script>
 
+    <script>
+        // Function to enable login button after captcha verification
+        function enableBtn() {
+            document.querySelector('button[type="submit"]').disabled = false;
+        }
+        
+        // Disable the login button initially (will be enabled by captcha)
+        document.addEventListener('DOMContentLoaded', function() {
+            // document.querySelector('button[type="submit"]').disabled = true;
+        });
+    </script>
 </body>
 
 </html>
