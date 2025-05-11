@@ -1,0 +1,187 @@
+/* Custom styles for the login page */
+
+body.login-page {
+    background: linear-gradient(45deg, #5f2c82, #49a09d, #3b6ed5, #7303c0);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+body.login-page::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+    animation: rotate 20s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.login-page::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='rgba(255, 255, 255, 0.1)' fill-opacity='1' d='M0,192L48,176C96,160,192,128,288,128C384,128,480,160,576,186.7C672,213,768,235,864,224C960,213,1056,171,1152,165.3C1248,160,1344,192,1392,208L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 45%;
+    opacity: 0.7;
+    z-index: 0;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.login-box {
+    margin-top: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1s ease-in-out;
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    max-width: 400px;
+    width: 100%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-logo {
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: pulse 2s infinite;
+}
+
+.login-logo a {
+    color: white !important;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.login-card-body {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.btn-success {
+    background: linear-gradient(45deg, #7303c0, #4764e6) !important;
+    border: none !important;
+    transition: all 0.3s ease;
+    padding: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(115, 3, 192, 0.3);
+}
+
+.btn-success:hover {
+    background: linear-gradient(45deg, #8520d4, #5573f6) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(115, 3, 192, 0.4);
+}
+
+.btn-success:active {
+    transform: translateY(-1px);
+}
+
+.input-group {
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.input-group:focus-within {
+    transform: translateX(5px);
+    box-shadow: 0 0 15px rgba(71, 100, 230, 0.3);
+}
+
+.form-control {
+    border: 2px solid #e1e1e1;
+    padding: 12px;
+    font-size: 14px;
+}
+
+.form-control:focus {
+    border-color: #7303c0;
+    box-shadow: 0 0 0 0.2rem rgba(115, 3, 192, 0.25);
+}
+
+.input-group-text {
+    background-color: rgba(115, 3, 192, 0.1);
+    border: 2px solid #e1e1e1;
+    color: #7303c0;
+}
+
+.icheck-primary label {
+    font-weight: 500;
+    color: #555;
+}
+
+a {
+    color: #4764e6;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #7303c0;
+    text-decoration: none;
+} 
